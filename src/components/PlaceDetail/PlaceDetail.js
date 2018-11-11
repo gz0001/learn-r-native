@@ -23,7 +23,9 @@ const placeDetail = props => {
     modalContent = (
       <View>
         <Image source={props.selectedPlace.image} style={styles.placeImage} />
-        <Text style={styles.placeName}>{props.selectedPlace.name}</Text>
+        <Text style={styles.placeName}>
+          {"Awesome Place: " + props.selectedPlace.name}
+        </Text>
       </View>
     );
   }
