@@ -24,7 +24,7 @@ const placeDetail = props => {
       <View>
         <Image source={props.selectedPlace.image} style={styles.placeImage} />
         <Text style={styles.placeName}>
-          {"Awesome Place: " + props.selectedPlace.name}
+          {"Awesome Place : " + props.selectedPlace.name}
         </Text>
       </View>
     );
