@@ -12,7 +12,21 @@ const RootStack = createStackNavigator(
     PlaceSearch
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Home",
+    //headerMode: "none",
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: "#f4511e"
+      },
+      headerTintColor: "white",
+      headerTitleStyle: {
+        fontWeight: "bold",
+        alignSelf: "center",
+        textAlign: "center",
+        justifyContent: "center"
+        //flex: 1
+      }
+    }
   }
 );
 

@@ -13,6 +13,12 @@ import {
 } from "../../store/actions/index";
 
 class PlaceSearch extends Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "Search a place in " + navigation.getParam("place", "Berlin")
+    };
+  };
+
   placeAddedHandler = placeName => {
     this.props.onAddPlace(placeName);
   };
@@ -30,6 +36,10 @@ class PlaceSearch extends Component {
   };
 
   render() {
+    //console.log("place is: ", this.props.navigation.state.params);
+
+    //console.log("router state", this.props.navigation.state);
+
     return (
       <View style={styles.container}>
         <PlaceDetail
