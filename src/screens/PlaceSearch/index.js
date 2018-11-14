@@ -1,6 +1,10 @@
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { AsyncStorage, StyleSheet, View } from "react-native";
 import { connect } from "react-redux";
+
+// Ajax:
+import { get, post } from "../../utils/AJAX";
+import url from "../../config/url";
 
 import PlaceInput from "../../components/PlaceInput/PlaceInput";
 import PlaceList from "../../components/PlaceList/PlaceList";
@@ -18,6 +22,16 @@ class PlaceSearch extends Component {
       title: "Search a place in " + navigation.getParam("place", "Berlin")
     };
   };
+
+  async componentDidMount() {
+    const token = await AsyncStorage.getItem("token");
+
+    const users = await get(url.users, { token });
+
+    //console.log("get users: " + users.data[0].username);
+
+    alert("request from: " + JSON.stringify(users.from));
+  }
 
   placeAddedHandler = placeName => {
     this.props.onAddPlace(placeName);

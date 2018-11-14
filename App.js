@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
-import { createStackNavigator } from "react-navigation";
+import { createStackNavigator, createSwitchNavigator } from "react-navigation";
 
 // Screens:
 import Home from "./src/screens/Home";
 import PlaceSearch from "./src/screens/PlaceSearch";
 
-const RootStack = createStackNavigator(
+const MainStack = createStackNavigator(
   {
-    Home,
     PlaceSearch
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "PlaceSearch",
     //headerMode: "none",
     navigationOptions: {
       headerStyle: {
@@ -27,6 +26,16 @@ const RootStack = createStackNavigator(
         //flex: 1
       }
     }
+  }
+);
+
+const RootStack = createSwitchNavigator(
+  {
+    Home,
+    MainStack
+  },
+  {
+    initialRouteName: "Home"
   }
 );
 

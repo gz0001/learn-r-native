@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { AsyncStorage, View, Text, TextInput, Button } from "react-native";
 import { connect } from "react-redux";
-import { NavigationEvents } from "react-navigation";
 
 // Ajax:
 import { get, post } from "../../utils/AJAX";
@@ -9,17 +8,17 @@ import url from "../../config/url";
 
 // Styles:
 import { margin } from "../../styles/globalStyles";
-import home from "./styles";
+import userProfile from "./styles";
 
-class Home extends Component {
+class UserProfile extends Component {
   static navigationOptions = ({}) => {
     return {
-      title: "Home",
+      title: "User profile",
       headerRight: (
         <View style={margin.mr_4}>
           <Button
             onPress={() => alert("This is a button!")}
-            title="Info"
+            title="Log "
             color="black"
           />
         </View>
