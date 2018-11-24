@@ -63,6 +63,7 @@ export const post = async (
     const response = await axios(config);
     return response.data;
   } catch (error) {
+    console.log("gor err: ", error);
     return false;
   }
 };

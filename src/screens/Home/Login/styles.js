@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
+export default (styles = StyleSheet.create({
+  bg: {
+    flex: 1
+  },
   container: {
     width: "100%",
     height: "100%",
@@ -14,9 +17,10 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    width: "60%",
-    backgroundColor: "lightgrey"
+    width: "60%"
+  },
+  login: {
+    padding: 10,
+    paddingHorizontal: 20
   }
-});
-
-export default styles;
+}));

@@ -1,31 +1,24 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
-import { createStackNavigator, createSwitchNavigator } from "react-navigation";
+import {
+  createStackNavigator,
+  createSwitchNavigator,
+  createDrawerNavigator
+} from "react-navigation";
 
 // Screens:
-import Home from "./src/screens/Home";
-import PlaceSearch from "./src/screens/PlaceSearch";
+import Home from "./src/screens/Home/Login";
+import PlaceStack from "./src/screens/PlaceAdd";
+import Dashboard from "./src/screens/Dashboard/";
 
-const MainStack = createStackNavigator(
+const MainStack = createDrawerNavigator(
   {
-    PlaceSearch
+    Dashboard,
+    PlaceStack
   },
   {
-    initialRouteName: "PlaceSearch",
-    //headerMode: "none",
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: "#f4511e"
-      },
-      headerTintColor: "white",
-      headerTitleStyle: {
-        fontWeight: "bold",
-        alignSelf: "center",
-        textAlign: "center",
-        justifyContent: "center"
-        //flex: 1
-      }
-    }
+    initialRouteName: "Dashboard",
+    drawerPosition: "left"
   }
 );
 

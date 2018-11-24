@@ -1,14 +1,20 @@
 import React, { Component } from "react";
 import { AsyncStorage, StyleSheet, View } from "react-native";
 import { connect } from "react-redux";
+import { createStackNavigator } from "react-navigation";
 
 // Ajax:
 import { get, post } from "../../utils/AJAX";
 import url from "../../config/url";
 
+// Custom components:
 import PlaceInput from "../../components/PlaceInput/PlaceInput";
 import PlaceList from "../../components/PlaceList/PlaceList";
 import PlaceDetail from "../../components/PlaceDetail/PlaceDetail";
+
+// Screen:
+
+// Actions:
 import {
   addPlace,
   deletePlace,
@@ -16,7 +22,7 @@ import {
   deselectPlace
 } from "../../store/actions/index";
 
-class PlaceSearch extends Component {
+class PlaceAdd extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: "Search a place in " + navigation.getParam("place", "Berlin")
@@ -24,13 +30,13 @@ class PlaceSearch extends Component {
   };
 
   async componentDidMount() {
-    const token = await AsyncStorage.getItem("token");
+    /* const token = await AsyncStorage.getItem("token");
 
     const users = await get(url.users, { token });
 
-    //console.log("get users: " + users.data[0].username);
+    //console.log("get users: " + users.data[0].username);*/
 
-    alert("request from: " + JSON.stringify(users.from));
+    alert(`${this.props.user.username} is logged in`);
   }
 
   placeAddedHandler = placeName => {
@@ -84,7 +90,8 @@ const styles = StyleSheet.create({
 const mapStateToProps = state => {
   return {
     places: state.places.places,
-    selectedPlace: state.places.selectedPlace
+    selectedPlace: state.places.selectedPlace,
+    user: state.auth.user
   };
 };
 
@@ -97,7 +104,30 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PlaceSearch);
+const PlaceStack = createStackNavigator(
+  {
+    PlaceAdd: connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )(PlaceAdd)
+  },
+  {
+    initialRouteName: "PlaceAdd",
+    //headerMode: "none",
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: "#f4511e"
+      },
+      headerTintColor: "white",
+      headerTitleStyle: {
+        fontWeight: "bold",
+        alignSelf: "center",
+        textAlign: "center",
+        justifyContent: "center"
+        //flex: 1
+      }
+    }
+  }
+);
+
+export default PlaceStack;

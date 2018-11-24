@@ -26,4 +26,14 @@ const margin = StyleSheet.create({
   mr_5: { marginRight: 10 }
 });
 
-export { margin };
+const container = StyleSheet.create({
+  center: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  full: {
+    flex: 1
+  }
+});
+export { container, margin };
