@@ -10,14 +10,15 @@ import {
 import Home from "./src/screens/Home/Login";
 import PlaceStack from "./src/screens/PlaceAdd";
 import Dashboard from "./src/screens/Dashboard/";
+import PlaceSearch from "./src/components/PlaceSearch/index";
 
 const MainStack = createDrawerNavigator(
   {
-    Dashboard,
-    PlaceStack
+    PlaceStack,
+    PlaceSearch
   },
   {
-    initialRouteName: "Dashboard",
+    initialRouteName: "PlaceStack",
     drawerPosition: "left"
   }
 );

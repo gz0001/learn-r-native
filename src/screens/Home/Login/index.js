@@ -13,6 +13,7 @@ import styles from "./styles";
 
 // Nav Components:
 import Register from "./../Register/index";
+import Animation from "./../Animation";
 
 // Custom Components:
 import DefaultButton from "../../../components/DefaultButton";
@@ -46,6 +47,8 @@ class Login extends Component {
   async componentDidMount() {
     /* const result = await get(url.users);
     console.log("get users: ", result); */
+
+    console.log("Ready to start");
   }
 
   handleLoginInput = key => val => {
@@ -56,13 +59,13 @@ class Login extends Component {
     const { username, password } = this.state;
 
     //const auth = await post(url.users + "/login", { username, password });
-    if (username === "admin" && password === "admin") {
+    if (username === "admin" || password === "admin") {
       this.setState({ error: false });
       this.props.onLogin({ username, password });
       /* await AsyncStorage.setItem("token", auth.data.token, err => {
         console.log("fail to store. ", err);
       }); */
-      this.props.navigation.navigate("Dashboard");
+      this.props.navigation.navigate("PlaceStack");
     } else {
       this.setState({ error: true });
     }
@@ -129,9 +132,6 @@ const LoginConnect = connect(
 )(Login);
 
 export default createBottomTabNavigator(
-  {
-    Login: LoginConnect,
-    Register
-  },
-  { initialLayout: "Login", swipeEnabled: true, animationEnabled: true }
+  { Register, Animation, Login: LoginConnect },
+  { initialLayout: "Register", swipeEnabled: true, animationEnabled: true }
 );

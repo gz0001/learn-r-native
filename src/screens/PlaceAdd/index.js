@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AsyncStorage, StyleSheet, View } from "react-native";
+import { AsyncStorage, StyleSheet, View, Button } from "react-native";
 import { connect } from "react-redux";
 import { createStackNavigator } from "react-navigation";
 
@@ -11,6 +11,7 @@ import url from "../../config/url";
 import PlaceInput from "../../components/PlaceInput/PlaceInput";
 import PlaceList from "../../components/PlaceList/PlaceList";
 import PlaceDetail from "../../components/PlaceDetail/PlaceDetail";
+import DefaultButton from "./../../components/DefaultButton/index";
 
 // Screen:
 
@@ -21,6 +22,12 @@ import {
   selectPlace,
   deselectPlace
 } from "../../store/actions/index";
+
+// Icons:
+import Icon from "react-native-vector-icons/FontAwesome";
+
+// Styles:
+import { margin } from "../../styles/globalStyles";
 
 class PlaceAdd extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -35,8 +42,7 @@ class PlaceAdd extends Component {
     const users = await get(url.users, { token });
 
     //console.log("get users: " + users.data[0].username);*/
-
-    alert(`${this.props.user.username} is logged in`);
+    //alert(`${this.props.user.username} is logged in`);
   }
 
   placeAddedHandler = placeName => {
@@ -84,6 +90,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "flex-start"
+  },
+  navBtn: {
+    backgroundColor: "grey",
+    paddingVertical: 6
   }
 });
 
@@ -114,7 +124,7 @@ const PlaceStack = createStackNavigator(
   {
     initialRouteName: "PlaceAdd",
     //headerMode: "none",
-    navigationOptions: {
+    navigationOptions: ({ navigation }) => ({
       headerStyle: {
         backgroundColor: "#f4511e"
       },
@@ -125,8 +135,16 @@ const PlaceStack = createStackNavigator(
         textAlign: "center",
         justifyContent: "center"
         //flex: 1
-      }
-    }
+      },
+      headerRight: (
+        <DefaultButton
+          buttonStyle={[styles.navBtn, margin.mr_4]}
+          onPress={() => navigation.toggleDrawer()}
+        >
+          <Icon color="white" name="bars" size={30} />
+        </DefaultButton>
+      )
+    })
   }
 );
 

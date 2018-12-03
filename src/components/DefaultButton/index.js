@@ -3,10 +3,11 @@ import { TouchableOpacity, StyleSheet, Text } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const DefaultButton = props => {
-  const { title, buttonStyle, textStyle } = props;
+  const { children, title, buttonStyle, textStyle } = props;
   return (
     <TouchableOpacity {...props} style={[styles.button, buttonStyle]}>
-      <Text style={[styles.text, textStyle]}>{title}</Text>
+      {children}
+      {title && <Text style={[styles.text, textStyle]}>{title}</Text>}
     </TouchableOpacity>
   );
 };

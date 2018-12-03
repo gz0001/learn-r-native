@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { View, TextInput, Button, StyleSheet } from "react-native";
+import DefaultInput from "./../DefaultInput/index";
 
 class PlaceInput extends Component {
   state = {
     placeName: ""
   };
 
-  componentDidMount() {
-    
-  }
+  componentDidMount() {}
 
   placeNameChangedHandler = val => {
     this.setState({
@@ -27,7 +26,7 @@ class PlaceInput extends Component {
   render() {
     return (
       <View style={styles.inputContainer}>
-        <TextInput
+        <DefaultInput
           placeholder="An awesome place"
           value={this.state.placeName}
           onChangeText={this.placeNameChangedHandler}
@@ -52,7 +51,8 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   placeInput: {
-    width: "70%"
+    width: "70%",
+    height: "80%"
   },
   placeButton: {
     width: "30%"
