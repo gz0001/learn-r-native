@@ -59,7 +59,7 @@ class Login extends Component {
     const { username, password } = this.state;
 
     //const auth = await post(url.users + "/login", { username, password });
-    if (username === "admin" || password === "admin") {
+    if (username === "admin" || password === "admin" || username === "Admin") {
       this.setState({ error: false });
       this.props.onLogin({ username, password });
       /* await AsyncStorage.setItem("token", auth.data.token, err => {
