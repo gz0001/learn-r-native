@@ -8,13 +8,14 @@ const placeList = props => {
     <FlatList
       style={styles.listContainer}
       data={props.places}
-      renderItem={(info) => (
+      renderItem={info => (
         <ListItem
           placeName={info.item.name}
           placeImage={info.item.image}
           onItemPressed={() => props.onItemSelected(info.item.key)}
         />
       )}
+      keyExtractor={(item, index) => index.toString()}
     />
   );
 };

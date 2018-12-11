@@ -1,18 +1,24 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, CheckBox } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import posed from "react-native-pose";
 
 // Styles:
 import { margin, layout } from "../../styles/globalStyles";
 import styles from "./styles";
 
+// Posed:
+const ListItem = posed.View({
+  enter: { x: 0, opacity: 1 },
+  exit: { x: 100, opacity: 0 }
+});
+
 const PersonListItem = ({ people, onItemPress, selected }) => {
   const { id, first_name, last_name, country, email, vip } = people;
-  console.log(id + ": " + selected);
 
   return (
     <TouchableOpacity onPress={() => onItemPress(id)}>
-      <View style={[styles.listWrapper]}>
+      <ListItem style={[styles.listWrapper]}>
         <View
           style={[
             styles.listContainer,
@@ -32,8 +38,11 @@ const PersonListItem = ({ people, onItemPress, selected }) => {
             <Text>{email}</Text>
             <Text>{country}</Text>
           </View>
+          <View style={{ justifyContent: "center" }}>
+            <CheckBox value={vip} />
+          </View>
         </View>
-      </View>
+      </ListItem>
     </TouchableOpacity>
   );
 };
