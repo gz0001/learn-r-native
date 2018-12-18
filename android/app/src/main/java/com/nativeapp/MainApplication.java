@@ -13,6 +13,8 @@ import com.oblador.vectoricons.VectorIconsPackage;
 import java.util.Arrays;
 import java.util.List;
 
+import org.pgsqlite.SQLitePluginPackage;
+
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
@@ -23,8 +25,10 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(), new VectorIconsPackage()
+      return Arrays.<ReactPackage>asList(         
+          new SQLitePluginPackage(),  
+          new MainReactPackage(), 
+          new VectorIconsPackage()
       );
     }
 

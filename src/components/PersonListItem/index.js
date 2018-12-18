@@ -18,7 +18,7 @@ const PersonListItem = ({ people, onItemPress, selected }) => {
 
   return (
     <TouchableOpacity onPress={() => onItemPress(id)}>
-      <ListItem style={[styles.listWrapper]}>
+      <View style={[styles.listWrapper]}>
         <View
           style={[
             styles.listContainer,
@@ -42,7 +42,7 @@ const PersonListItem = ({ people, onItemPress, selected }) => {
             <CheckBox value={vip} />
           </View>
         </View>
-      </ListItem>
+      </View>
     </TouchableOpacity>
   );
 };

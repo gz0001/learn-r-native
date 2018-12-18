@@ -64,7 +64,7 @@ class Register extends Component {
       <View style={[container.center]}>
         <DefaultButton
           onPress={this.toogleList}
-          title="toogle list people"
+          title="toogle list of people"
           buttonStyle={[margin.mb_3, styles.toogleBtn]}
         />
         <Transition>

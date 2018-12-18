@@ -4,7 +4,7 @@ const margin = StyleSheet.create({
   mt_1: { marginTop: 5 },
   mt_2: { marginTop: 10 },
   mt_3: { marginTop: 15 },
-  mt_4: { marginTop: 20 },
+  mt_4: { marginTop: 50 },
   mt_5: { marginTop: 25 },
 
   mb_1: { marginBottom: 5 },
