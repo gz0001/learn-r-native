@@ -13,7 +13,7 @@ const ListItem = posed.View({
   exit: { x: 100, opacity: 0 }
 });
 
-const PersonListItem = ({ people, onItemPress, selected }) => {
+const PersonListItem = ({ people, onItemPress, selected, onStatusChange }) => {
   const { id, first_name, last_name, country, email, vip } = people;
 
   return (
@@ -39,7 +39,7 @@ const PersonListItem = ({ people, onItemPress, selected }) => {
             <Text>{country}</Text>
           </View>
           <View style={{ justifyContent: "center" }}>
-            <CheckBox value={vip} />
+            <CheckBox value={vip} onValueChange={() => onStatusChange(id)} />
           </View>
         </View>
       </View>

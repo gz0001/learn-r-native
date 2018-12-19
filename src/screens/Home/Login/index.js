@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { AsyncStorage, View, Text, ImageBackground } from "react-native";
 import { connect } from "react-redux";
-import { NavigationEvents, createBottomTabNavigator } from "react-navigation";
+import {
+  NavigationEvents,
+  createBottomTabNavigator,
+  createMaterialTopTabNavigator
+} from "react-navigation";
+
+import Icon from "react-native-vector-icons/FontAwesome";
 
 // Ajax:
 import { get, post } from "../../../utils/AJAX";
@@ -25,16 +31,11 @@ import bgWhite from "../../../assets/bg-white.jpeg";
 class Login extends Component {
   static navigationOptions = ({}) => {
     return {
-      title: "Home",
-      headerRight: (
-        <View style={margin.mr_4}>
-          <DefaultButton
-            onPress={() => alert("This is a button!")}
-            title="Info"
-            color="black"
-          />
-        </View>
-      )
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        return focused ? (
+          <Icon name="home" size={16} color={tintColor} />
+        ) : null;
+      }
     };
   };
 
@@ -131,7 +132,18 @@ const LoginConnect = connect(
   mapDispatchToProps
 )(Login);
 
-export default createBottomTabNavigator(
+export default createMaterialTopTabNavigator(
   { Register, Animation, Login: LoginConnect },
-  { initialLayout: "Register", swipeEnabled: true, animationEnabled: true }
+  {
+    initialRouteName: "Register",
+    tabBarPosition: "bottom",
+    swipeEnabled: true,
+    animationEnabled: true,
+    tabBarOptions: {
+      activeTintColor: "#f0edf6",
+      showIcon: true,
+      inactiveTintColor: "#3e2465",
+      tabStyle: { backgroundColor: "#694fad" }
+    }
+  }
 );

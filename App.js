@@ -3,7 +3,8 @@ import { StyleSheet, View } from "react-native";
 import {
   createStackNavigator,
   createSwitchNavigator,
-  createDrawerNavigator
+  createDrawerNavigator,
+  createNavigationContainer
 } from "react-navigation";
 
 import { select, exec } from "./src/utils/db";
@@ -38,11 +39,13 @@ const RootStack = createSwitchNavigator(
   }
 );
 
+const AppContainer = createNavigationContainer(RootStack);
+
 class App extends Component {
   async componentDidMount() {
     const selectPer = "SELECT * from person";
     const peter = `INSERT INTO person( firstname, lastname, email, country, vip) VALUES('peter', 'parker', 'spider@men.us','USA', 1)`;
-
+    const del = "DELETE from person";
     try {
       //const res = await select(selectPer);
       const res = await exec(selectPer);
@@ -53,7 +56,7 @@ class App extends Component {
   }
 
   render() {
-    return <RootStack />;
+    return <AppContainer />;
   }
 }
 

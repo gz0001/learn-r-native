@@ -6,17 +6,17 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { SQLite, openDatabase } from "react-native-sqlite-storage";
 
 // Ajax:
-import { get, post } from "../../../utils/AJAX";
-import url from "../../../config/url";
+import { get, post } from "app/src/utils/AJAX";
+import url from "app/src/config/url";
 
 // Styles:
-import { container, margin } from "../../../styles/globalStyles";
+import { container, margin } from "app/src/styles/globalStyles";
 import styles from "./styles";
 
 // Data:
 import people from "./people.json";
-import PersonListItem from "../../../components/PersonListItem";
-import DefaultButton from "../../../components/DefaultButton";
+import PersonListItem from "app/src/components/PersonListItem";
+import DefaultButton from "app/src/components/DefaultButton";
 
 // Posed:
 
@@ -48,10 +48,23 @@ class Register extends Component {
     this.setState({ selected: id });
   };
 
+  handleStatusChange = id => {
+    const { people } = this.state;
+
+    const newPeople = JSON.parse(JSON.stringify(people));
+
+    const index = newPeople.findIndex(p => (p.id = id));
+
+    newPeople[index].vip = !newPeople[index].vip;
+
+    this.setState({ people: newPeople });
+  };
+
   renderListItem = ({ item }) => (
     <PersonListItem
       people={item}
       onItemPress={this.handeItemSelect}
+      onStatusChange={this.handleStatusChange}
       selected={this.state.selected === item.id}
     />
   );

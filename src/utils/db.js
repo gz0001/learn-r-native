@@ -33,11 +33,11 @@ export const exec = (query, args = null) => {
         query,
         params,
         (tx, results) => {
-          console.log("tx: ", tx);
+          //console.log("tx: ", tx);
           resolve(results);
         },
         (tx, error) => {
-          console.log("tx: ", tx);
+          //console.log("tx: ", tx);
           reject(error);
         }
       );
