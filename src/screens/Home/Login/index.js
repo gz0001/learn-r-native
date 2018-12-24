@@ -24,6 +24,7 @@ import Animation from "./../Animation";
 // Custom Components:
 import DefaultButton from "../../../components/DefaultButton";
 import DefaultInput from "../../../components/DefaultInput";
+import Calendar from "app/src/screens/Calendar";
 
 // Images:
 import bgWhite from "../../../assets/bg-white.jpeg";
@@ -48,8 +49,7 @@ class Login extends Component {
   async componentDidMount() {
     /* const result = await get(url.users);
     console.log("get users: ", result); */
-
-    console.log("Ready to start");
+    //console.log("Ready to start");
   }
 
   handleLoginInput = key => val => {
@@ -133,9 +133,9 @@ const LoginConnect = connect(
 )(Login);
 
 export default createMaterialTopTabNavigator(
-  { Register, Animation, Login: LoginConnect },
+  { Calendar, Register, Animation, Login: LoginConnect },
   {
-    initialRouteName: "Register",
+    initialRouteName: "Calendar",
     tabBarPosition: "bottom",
     swipeEnabled: true,
     animationEnabled: true,

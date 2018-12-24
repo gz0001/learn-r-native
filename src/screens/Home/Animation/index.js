@@ -3,6 +3,7 @@ import { View, Text, ScrollView } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import posed from "react-native-pose";
 import DateTimePicker from "react-native-modal-datetime-picker";
+import { format } from "date-fns";
 
 // Styles:
 import { container, margin } from "app/src/styles/globalStyles";
@@ -40,7 +41,7 @@ class Animation extends Component {
 
   handleDateInput = date => {
     console.log("A date has been picked: ", date);
-    this.setState({ date: date.toString() });
+    this.setState({ date: format(date, "DD.MM.YYYY") });
   };
 
   render() {

@@ -4,7 +4,7 @@ import {
   createStackNavigator,
   createSwitchNavigator,
   createDrawerNavigator,
-  createNavigationContainer
+  createAppContainer
 } from "react-navigation";
 
 import { select, exec } from "./src/utils/db";
@@ -39,7 +39,7 @@ const RootStack = createSwitchNavigator(
   }
 );
 
-const AppContainer = createNavigationContainer(RootStack);
+const AppContainer = createAppContainer(RootStack);
 
 class App extends Component {
   async componentDidMount() {
